@@ -1,4 +1,6 @@
 var config = require("./Config");
+var { EmbedBuilder } = require("discord.js");
+
 var strings = {
   "core-error-command": {
     "en": { type: "string", context: "%e_UI_X% Command errored while trying to process, please try later again!" },
@@ -53,7 +55,31 @@ var strings = {
 
   "daily-not-ready": {
     "en": { type: "string", context: "%e_UI_X% Daily not ready, next claim at %date%." },
-    "de": { type: "string", context: "%e_UI_X% Tägliche belohnunh nicht bereit, nächster claim am %date%." }
+    "de": { type: "string", context: "%e_UI_X% Tägliche belohnung nicht bereit, nächster claim am %date%." }
+  },
+  "daily-claimed": {
+    "en": { type: "embed", context: {
+      color: [100, 250, 100],
+      title: "%e_UI_Checkmark% Daily claimed",
+      description: "%e_Gift% Reward: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
+    }},
+    "de": { type: "embed", context: {
+      color: [100, 250, 100],
+      title: "%e_UI_Checkmark% Tägliche belohnung eingesammelt",
+      description: "%e_Gift% Belohnung: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
+    }},
+  },
+  "daily-claimed-boost": {
+    "en": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "%e_UI_Checkmark% Daily claimed",
+      description: "%e_Gift% Reward: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%\n%e_PurpleLighting% 2x Weekend boost active!"
+    }},
+    "de": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "%e_UI_Checkmark% Tägliche belohnung eingesammelt",
+      description: "%e_Gift% Belohnung: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%\n%e_PurpleLighting% 2x Wochenend Boost aktiv!"
+    }},
   }
 };
 
@@ -89,12 +115,30 @@ var parse_string = function (string, vars) {
 var get_locale_raw = function (lang, id) { return strings[id][lang] };
 
 var get_locale_parsed = function (lang, id, vars) {
-  var returned = get_locale_raw(lang, id);
+  let returned = get_locale_raw(lang, id);
   switch (returned.type) {
     case "string":
       return parse_string(returned.context, vars);
+    case "embed":
+      {
+        var embed = new EmbedBuilder();
+        returned = returned.context;
+
+        if (returned.color)
+          embed.setColor(returned.color);
+        if (returned.title)
+          embed.setTitle(parse_string(returned.title, vars));
+        if (returned.description)
+          embed.setDescription(parse_string(returned.description, vars));
+        if (returned.fields)
+          embed.setFields(parse_string(returned.fields, vars));
+        if (returned.footer)
+          embed.setFields(parse_string(returned.footer, vars));
+
+        return embed;
+      }
     default:
-      return "No translation found for: " + id;
+      return "No translation type found for: " + id;
   };
 };
 

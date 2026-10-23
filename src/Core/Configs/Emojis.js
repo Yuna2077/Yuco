@@ -1,4 +1,10 @@
 module.exports = {
+  "RedLighting": "<:RedLighting:1563337976656830627>",
+  "PurpleLighting": "<:PurpleLighting:1563337975318978657>",
+  "BlueLighting": "<:BlueLighting:1563337942251077822>",
+  "GreenLighting": "<:GreenLighting:1563337972714180618>",
+  "Lighting": "<:Lighting:1563337973615825117>",
+
   "PurpleFire": "<:PurpleFire:1563253473087332402>",
   "Fire": "<:Fire:1563253455869706373>",
 

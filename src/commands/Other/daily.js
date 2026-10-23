@@ -1,5 +1,6 @@
 var { get_locale_parsed } = require("../../Core/Localization");
-var { GetAsync, AddToAsync } = require("../../DataStorage/Datastore");
+var { add_history } = require("../../Utilities/Helper");
+var { GetAsync, AddToAsync, SetAsync } = require("../../DataStorage/Datastore");
 
 var settings = {
   payout: { min: 500, max: 2500 },
@@ -16,7 +17,9 @@ module.exports = {
     var today = new Date();
     var name = settings.days[today.getDay()];
     var today_str = today.toISOString().split("T")[0];
-    var yesterday_str = (today.getDate() - 1).toISOString().split("T")[0];
+    let yesterday = new Date();
+    yesterday.setDate(today.getDate()-1);
+    var yesterday_str = yesterday.toISOString().split("T")[0]
 
     let data = await GetAsync(interaction.user.id, "daily");
     if (!data.STREAK || !data.BEST || !data.LAST) data = { STREAK: 0, BEST: 0, LAST: "1999-01-01" };
@@ -24,9 +27,16 @@ module.exports = {
     if (data.LAST === today_str) return interaction.editReply(get_locale_parsed(vars.language, "daily-not-ready", { date: `<t:${Math.floor(today.setHours(24, 0, 0, 0) / 1000)}:F>` }));
 
     data.STREAK = (data.LAST === yesterday_str) ? data.STREAK +1 : 0;
-    data.BEST = data.BEST < streak ? streak : DailyData.BEST
+    data.BEST = data.BEST < data.STREAK ? data.STREAK : data.BEST
     var reward = Math.floor(Math.random() * (settings.payout.max - settings.payout.min) + settings.payout.min);
-    var is_weekend = (dayName === 'Saturday' || dayName === 'Sunday');
-    
+    var is_weekend = (name === 'Saturday' || name === 'Sunday');
+
+    await AddToAsync(interaction.user.id, { cash: reward, total_cash: reward });
+
+    let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + reward + " [Daily]");
+    await SetAsync(interaction.user.id, { history: history, daily: data });
+
+    var embed = (is_weekend) ? get_locale_parsed(vars.language, "daily-claimed-boost", { amount: reward, streak: data.STREAK, streak_best: data.BEST }) : get_locale_parsed(vars.language, "daily-claimed", { amount: reward, streak: data.STREAK, streak_best: data.BEST });
+    return interaction.editReply({ embeds: [embed] });
   }
 };
