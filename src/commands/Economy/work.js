@@ -72,7 +72,7 @@ module.exports = {
     var earned = Math.round(amount * settings.rarities[rarity].worth);
     var material = choose(settings.materials[job][rarity])
 
-    await AddToAsync(interaction.user.id, { cash: earned });
+    await AddToAsync(interaction.user.id, { cash: earned, total_cash: earned });
 
     let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + earned + " [Work]");
     await SetAsync(interaction.user.id, { history: history });
