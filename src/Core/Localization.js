@@ -61,12 +61,12 @@ var strings = {
     "en": { type: "embed", context: {
       color: [100, 250, 100],
       title: "%e_UI_Checkmark% Daily claimed",
-      description: "%e_Gift% Reward: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
+      description: "%e_Gift% Reward: %amount% %e_Cash%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
     }},
     "de": { type: "embed", context: {
       color: [100, 250, 100],
       title: "%e_UI_Checkmark% Tägliche belohnung eingesammelt",
-      description: "%e_Gift% Belohnung: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
+      description: "%e_Gift% Belohnung: %amount% %e_Cash%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%"
     }},
   },
   "daily-claimed-boost": {
@@ -80,7 +80,24 @@ var strings = {
       title: "%e_UI_Checkmark% Tägliche belohnung eingesammelt",
       description: "%e_Gift% Belohnung: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%\n%e_PurpleLighting% 2x Wochenend Boost aktiv!"
     }},
-  }
+  },
+
+  "rob-bot": {
+    "en": { type: "string", context: "%e_UI_X% Robbing a bot huh... you hit a new low." },
+    "de": { type: "string", context: "%e_UI_X% Einen bot ausrauben huh... du bist das aller letzte" }
+  },
+  "rob-self": {
+    "en": { type: "string", context: "%e_UI_X% Sure rob yourself.. here... take your own money %amount%" },
+    "de": { type: "string", context: "%e_UI_X% Sicherlich raub dich selbst aus... hier... nehm dein eigenes geld %amount%" }
+  },
+  "rob-succeed": {
+    "en": { type: "string", context: "%e_UI_X% You have robbed %amount% %e_Cash% from %user%!" },
+    "de": { type: "string", context: "%e_UI_X% Du hast %amount% %e_Cash% von %user% geklaut!" }
+  },
+  "rob-caught": {
+    "en": { type: "string", context: "%e_Skull% You were caught in the attempt to rob %user% you have been fined %amount% %e_Cash%!" },
+    "de": { type: "string", context: "%e_UI_X% Du wurdest erwischt beim versuch %user% auszurauben, du musstest eine strafe von %amount% %e_Cash% zahlen!" }
+  },
 };
 
 
@@ -115,7 +132,13 @@ var parse_string = function (string, vars) {
 var get_locale_raw = function (lang, id) { return strings[id][lang] };
 
 var get_locale_parsed = function (lang, id, vars) {
-  let returned = get_locale_raw(lang, id);
+  let returned;
+  try {
+    returned = get_locale_raw(lang, id);
+  } catch(err) {
+    return "translation is currently broken: " + err;
+  };
+
   switch (returned.type) {
     case "string":
       return parse_string(returned.context, vars);
@@ -138,7 +161,7 @@ var get_locale_parsed = function (lang, id, vars) {
         return embed;
       }
     default:
-      return "No translation type found for: " + id;
+      return "translation is currently broken: no type found for: " + id;
   };
 };
 

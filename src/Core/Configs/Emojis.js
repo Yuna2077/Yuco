@@ -1,4 +1,7 @@
 module.exports = {
+  "WhiteSkul": "<:WhiteSkul:1563682989744066601>",
+  "Skull": "<:Skull:1563682980482785390>",
+
   "RedLighting": "<:RedLighting:1563337976656830627>",
   "PurpleLighting": "<:PurpleLighting:1563337975318978657>",
   "BlueLighting": "<:BlueLighting:1563337942251077822>",
