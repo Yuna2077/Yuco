@@ -22,12 +22,14 @@ module.exports = {
     var yesterday_str = yesterday.toISOString().split("T")[0]
 
     let data = await GetAsync(interaction.user.id, "daily");
-    if (!data.STREAK || !data.BEST || !data.LAST) data = { STREAK: 0, BEST: 0, LAST: "1999-01-01" };
+    data = JSON.parse(data);
 
     if (data.LAST === today_str) return interaction.editReply(get_locale_parsed(vars.language, "daily-not-ready", { date: `<t:${Math.floor(today.setHours(24, 0, 0, 0) / 1000)}:F>` }));
 
-    data.STREAK = (data.LAST === yesterday_str) ? data.STREAK +1 : 0;
-    data.BEST = data.BEST < data.STREAK ? data.STREAK : data.BEST
+    data.LAST = today_str;
+    data.STREAK = (data.LAST === yesterday_str) ? data.STREAK + 1 : 1;
+    data.BEST = data.BEST < data.STREAK ? data.STREAK : data.BEST;
+
     var reward = Math.floor(Math.random() * (settings.payout.max - settings.payout.min) + settings.payout.min);
     var is_weekend = (name === 'Saturday' || name === 'Sunday');
 
