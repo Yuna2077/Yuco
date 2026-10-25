@@ -1,4 +1,5 @@
 var config = require("./Config");
+var { choose } = require("../Utilities/Helper");
 var { EmbedBuilder } = require("discord.js");
 
 var strings = {
@@ -96,8 +97,29 @@ var strings = {
   },
   "rob-caught": {
     "en": { type: "string", context: "%e_Skull% You were caught in the attempt to rob %user% you have been fined %amount% %e_Cash%!" },
-    "de": { type: "string", context: "%e_UI_X% Du wurdest erwischt beim versuch %user% auszurauben, du musstest eine strafe von %amount% %e_Cash% zahlen!" }
+    "de": { type: "string", context: "%e_Skull% Du wurdest erwischt beim versuch %user% auszurauben, du musstest eine strafe von %amount% %e_Cash% zahlen!" }
   },
+
+  "bonk-bot": {
+    "en": { type: "string", context: "%e_Skull% %user% goes on to bonk the metal %target% where it hurts (Why would anyone bonk a bot...)!" },
+    "de": { type: "string", context: "%e_Skull% %user% geht und bonk metal kopf %target% wo es weh tut (Warum man auch immer einen bot bonkt...)!" }
+  },
+  "bonk": {
+    "en": { type: "random", context: [
+      "🔨 %user% [bonked](%gif%) %target% into the next century!",
+      "🌌 %user% [bonked](%gif%) %target% so hard they saw stars!",
+      "🌕 %user% [bonked](%gif%) %target% all the way to the moon!",
+      "💫 %user% [bonked](%gif%) %target% into another dimension!",
+      "🪐 %user% [bonked](%gif%) %target% straight into orbit!"
+    ]},
+    "de": { type: "random", context: [
+      "🔨 %user% [bonked](%gif%) %target% ins nächste jahrhundert!",
+      "🌌 %user% [bonked](%gif%) %target% bis er sterne sah!",
+      "🌕 %user% [bonked](%gif%) %target% bis zum mund und zurück!",
+      "💫 %user% [bonked](%gif%) %target% in eine andere dimension!",
+      "🪐 %user% [bonked](%gif%) %target% ins orbit!"
+    ]},
+  }
 };
 
 
@@ -142,6 +164,8 @@ var get_locale_parsed = function (lang, id, vars) {
   switch (returned.type) {
     case "string":
       return parse_string(returned.context, vars);
+    case "random":
+      return parse_string(choose(returned.context), vars);
     case "embed":
       {
         var embed = new EmbedBuilder();
