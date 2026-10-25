@@ -28,7 +28,7 @@ module.exports = {
     if (Math.random() * 100 < settings.succeed_percentage ) {
       let target_cash = await GetAsync(target.id, "cash");
       target_cash = Math.floor(target_cash * (Math.random() * settings.takeaway_percentage_max/100) )
-      let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + target + " [Rob-Success]");
+      let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + target_cash + " [Rob-Success]");
 
       await AddToAsync(target.id, { cash: -target_cash });
       await AddToAsync(interaction.user.id, { cash: target_cash });
