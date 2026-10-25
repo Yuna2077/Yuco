@@ -18,7 +18,6 @@ module.exports = {
   },
   run: async function(interaction, client, vars) {
     var target = interaction.options.getUser("user");
-    var amount = interaction.options.getInteger("amount");
 
     if (target && target.bot) return interaction.editReply(get_locale_parsed(vars.language, "rob-bot"));
 
