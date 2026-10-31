@@ -1,7 +1,8 @@
 var { get_locale_parsed } = require("../../Core/Localization");
 var { core } = require("../../Core/Config");
-var { choose, history, add_history } = require("../../Utilities/Helper");
+var { choose, add_history } = require("../../Utilities/Helper");
 var { AddToAsync, GetAsync, SetAsync } = require("../../DataStorage/Datastore");
+var { set_cooldown_for } = require("../../Utilities/Cooldown");
 
 var settings = {
   jobs: {
@@ -58,6 +59,8 @@ var settings = {
 module.exports = {
   data: { name: "work", description: "Earn yourself some cash!" },
   run: async function(interaction, client, vars) {
+    set_cooldown_for(interaction, "work", 60);
+
     var job = choose(settings.jobs[core.THEME]);
 
     var rarityWeight = Object.values(settings.rarities).reduce((sum, r) => sum + r.rarity, 0);

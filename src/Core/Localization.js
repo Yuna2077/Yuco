@@ -3,10 +3,25 @@ var { choose } = require("../Utilities/Helper");
 var { EmbedBuilder } = require("discord.js");
 
 var strings = {
+  //#region Core
+  "core-error-no-permission": {
+    "en": { type: "string", context: "%e_UI_X% You do not have permission to use the bot at this time, come back later." },
+    "de": { type: "string", context: "%e_UI_X% Du hast keine erlaubniss denn bot aktuel zu benutzen, komm später wieder." }
+  },
   "core-error-command": {
     "en": { type: "string", context: "%e_UI_X% Command errored while trying to process, please try later again!" },
     "de": { type: "string", context: "%e_UI_X% Kommand error beim ausführen, bitte probiere es später nochmal!" }
   },
+  "core-error-defer": {
+    "en": { type: "string", context: "%e_UI_X% Interaction expired or was already handled." },
+    "de": { type: "string", context: "%e_UI_X% Interaktion abgelaufen oder wurde schon gehandhabt." }
+  },
+  "core-cooldown": {
+    "en": { type: "string", context: "%e_UI_X% You are on cooldown, %seconds% seconds remaining!" },
+    "de": { type: "string", context: "%e_UI_X% Du bist auf cooldown, noch %seconds% sekunden!" }
+  },
+  //#endregion
+
   "bank-deposite": {
     "en": { type: "string", context: "%e_UI_Plus% You deposited %amount% %e_Cash% into the bank!\n- In bank: **%newAmount% %e_Cash%**" },
     "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% eingezahlt!\n- In Bank: **%newAmount% %e_Cash%**" }
@@ -15,7 +30,24 @@ var strings = {
     "en": { type: "string", context: "%e_UI_Plus% You have withdrawn %amount% %e_Cash% from the bank!\n- In bank: **%newAmount% %e_Cash%**" },
     "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% abgehoben!\n- In Bank: **%newAmount% %e_Cash%**" }
   },
+  "bank-pay-bot": {
+    "en": { type: "string", context: "%e_UI_X% Please stop giving money to bots... you would not pay for ai either right?" },
+    "de": { type: "string", context: "%e_UI_X% Bitte hör auf denn bot geld zu geben... du würdest für ki ja auch nicht zahlen oder?" }
+  },
+  "bank-pay-poor": {
+    "en": { type: "string", context: "%e_UI_X% You are too poor to pay this much." },
+    "de": { type: "string", context: "%e_UI_X% Du bist zu arm so viel zu bezahlen." }
+  },
+  "bank-pay-self": {
+    "en": { type: "string", context: "%e_UI_X% How do you expect to give yourself money?" },
+    "de": { type: "string", context: "%e_UI_X% Wie willst du dir selbst geld geben?" }
+  },
+  "bank-pay-paid": {
+    "en": { type: "string", context: "%e_UI_Checkmark% You paid %amount% %e_Cash% to %ping%." },
+    "de": { type: "string", context: "%e_UI_Checkmark% Du hast %amount% %e_Cash% an %ping% bezahlt." }
+  },
 
+  //#region Work
   "work-mine": {
     "en": { type: "string", context: "You descended into the mines and gathered **%amount%x %material%**! Your **%rarity%** discovery earned you **%earned%** %e_Cash%!" },
     "de": { type: "string", context: "Du begebst dich in die mine und sammelst **%amount%x %material%**! Deine **%rarity%** entdeckung bring dir **%amount%** %e_Cash% ein!" }
@@ -36,23 +68,8 @@ var strings = {
     "en": { type: "string", context: "%e_UI_X% The bot is richer then you, so its not worth checking out." },
     "de": { type: "string", context: "%e_UI_X% Der bot ist reicher als du, also es ist es nicht wert zu checken." }
   },
+  //#endregion
 
-  "pay-bot": {
-    "en": { type: "string", context: "%e_UI_X% Please stop giving money to bots... you would not pay for ai either right?" },
-    "de": { type: "string", context: "%e_UI_X% Bitte hör auf denn bot geld zu geben... du würdest für ki ja auch nicht zahlen oder?" }
-  },
-  "pay-poor": {
-    "en": { type: "string", context: "%e_UI_X% You are too poor to pay this much." },
-    "de": { type: "string", context: "%e_UI_X% Du bist zu arm so viel zu bezahlen." }
-  },
-  "pay-self": {
-    "en": { type: "string", context: "%e_UI_X% How do you expect to give yourself money?" },
-    "de": { type: "string", context: "%e_UI_X% Wie willst du dir selbst geld geben?" }
-  },
-  "pay-paid": {
-    "en": { type: "string", context: "%e_UI_Checkmark% You paid %amount% %e_Cash% to %ping%." },
-    "de": { type: "string", context: "%e_UI_Checkmark% Du hast %amount% %e_Cash% an %ping% bezahlt." }
-  },
 
   "daily-not-ready": {
     "en": { type: "string", context: "%e_UI_X% Daily not ready, next claim at %date%." },
@@ -100,6 +117,10 @@ var strings = {
     "de": { type: "string", context: "%e_Skull% Du wurdest erwischt beim versuch %user% auszurauben, du musstest eine strafe von %amount% %e_Cash% zahlen!" }
   },
 
+
+
+
+  //#region FUN
   "bonk-bot": {
     "en": { type: "string", context: "%e_Skull% %user% goes on to bonk the metal %target% where it hurts (Why would anyone bonk a bot...)!" },
     "de": { type: "string", context: "%e_Skull% %user% geht und bonk metal kopf %target% wo es weh tut (Warum man auch immer einen bot bonkt...)!" }
@@ -138,7 +159,8 @@ var strings = {
       "💫 %user% [erscchreckte](%gif%) %target% in eine andere dimension!",
       "🪐 %user% [erscchreckt](%gif%) %target% ins orbit!"
     ]},
-  }
+  },
+  //#endregion
 };
 
 

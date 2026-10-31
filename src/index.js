@@ -11,8 +11,9 @@ var DISCORD_ERRORS = {
 };
 
 var { get_locale_parsed } = require("./Core/Localization");
-var { initDB } = require("./DataStorage/Datastore");
+var { initDB, GetAsync } = require("./DataStorage/Datastore");
 var loadModules = require('./Utilities/LoadCommandsModules');
+var { has_cooldown_for, set_cooldown_for } = require("./Utilities/Cooldown");
 
 initDB();
 var commandModules = loadModules('./src/Commands');
@@ -76,7 +77,10 @@ bot.once('clientReady', async () => {
 bot.on('interactionCreate', async (interaction) => {
     if (!interaction?.isChatInputCommand()) return;
 
-    const { commandName, user, guild } = interaction;
+    const { commandName } = interaction;
+    var vars = {
+        language: await GetAsync(interaction.user.id, "SETTING_LANGUAGE")
+    };
 
     if (`${interaction.user.id}` !== ownerId) {
         if (!testers.includes(interaction.user.id)) {
@@ -84,50 +88,41 @@ bot.on('interactionCreate', async (interaction) => {
         };
     };
 
-    // ========================
-    // Defer
-    // ========================
+
     if (!interaction.deferred && !interaction.replied) {
         try {
             await interaction.deferReply();
         } catch (err) {
             if (err.code === DISCORD_ERRORS.UNKNOWN_INTERACTION || err.code === DISCORD_ERRORS.INTERACTION_ALREADY_ACKNOWLEDGED) {
+                interaction.editReply({ content: get_locale_parsed(vars.language, "core-error-defer", { seconds: duration }), flags: 64 });
                 console.log(`[Interaction Log] ${interaction.user.tag} interaction expired or was already handled.`);
                 return;
             }
 
-            // Log other serious errors (API down, etc.)
             console.error("Critical error during deferral:", err);
             return;
         }
     }
 
-    // ========================
-    // Gather base variables
-    // ========================
+
     const module = commandModules[commandName];
+    var duration = has_cooldown_for(interaction, commandName);
+    if (duration) return interaction.editReply({ content: get_locale_parsed(vars.language, "core-cooldown", { seconds: duration }), flags: 64 });
 
-    if (!module) {
-        return interaction.editReply({ content: config.messages.command_error_unable_to_use, flags: 64 });
-    }
-
-    // ========================
-    // Command
-    // ========================
     try {
         const timeoutPromise = new Promise((_, reject) =>
             setTimeout(() => reject(new Error("Command timeout")), 10000)
         );
 
         await Promise.race([
-            module.run(interaction, bot, { language: "en" }),
+            module.run(interaction, bot, vars),
             timeoutPromise
         ])
 
     } catch (err) {
         console.error(`Error executing command ${commandName}:`, err);
 
-        await interaction.editReply(get_locale_parsed("en", "core-error-command")).catch(() => { });
+        await interaction.editReply({ content: get_locale_parsed(vars.language, "core-error-command") + err, flags: 64 });
     }
 });
 // #endregion

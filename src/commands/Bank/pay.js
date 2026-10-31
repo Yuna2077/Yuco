@@ -14,15 +14,15 @@ module.exports = {
     var target = interaction.options.getUser("user");
     var amount = interaction.options.getInteger("amount");
 
-    if (target && target.bot) return interaction.editReply(get_locale_parsed(vars.language, "pay-bot"));
-    if (target.id == interaction.user.id) return interaction.editReply(get_locale_parsed(vars.language, "pay-self"));
+    if (target && target.bot) return interaction.editReply(get_locale_parsed(vars.language, "bank-pay-bot"));
+    if (target.id == interaction.user.id) return interaction.editReply(get_locale_parsed(vars.language, "bank-pay-self"));
 
     var cash = await GetAsync(interaction.user.id, "cash");
-    if (cash < amount) return interaction.editReply(get_locale_parsed(vars.language, "pay-poor"));
+    if (cash < amount) return interaction.editReply(get_locale_parsed(vars.language, "bank-pay-poor"));
 
     await AddToAsync(interaction.user.id, { cash: -amount });
     await AddToAsync(target.id, { cash: amount });
 
-    return interaction.editReply(get_locale_parsed(vars.language, "pay-paid", { amount: amount, ping: `<@${target.id}>` }));
+    return interaction.editReply(get_locale_parsed(vars.language, "bank-pay-paid", { amount: amount, ping: `<@${target.id}>` }));
   }
 };
