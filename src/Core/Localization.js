@@ -119,6 +119,25 @@ var strings = {
       "💫 %user% [bonked](%gif%) %target% in eine andere dimension!",
       "🪐 %user% [bonked](%gif%) %target% ins orbit!"
     ]},
+  },
+
+  "spook-bot": {
+    "en": { type: "string", context: "%e_Skull% %user% goes on to spook a humanoid named %target%..." },
+    "de": { type: "string", context: "%e_Skull% %user% erschrekt einen humanoiden benannt %target%..." }
+  },
+  "spook": {
+    "en": { type: "random", context: [
+      "🔨 %user% [spooked](%gif%) %target% into the next century!",
+      "🌌 %user% [spooked](%gif%) %target% so hard they blacked out!",
+      "💫 %user% [spooked](%gif%) %target% into another dimension!",
+      "🪐 %user% [spooked](%gif%) %target% straight into orbit!"
+    ]},
+    "de": { type: "random", context: [
+      "🔨 %user% [erscchreckt](%gif%) %target% ins nächste jahrhundert!",
+      "🌌 %user% [erscchreckt](%gif%) %target% bis im/ihr schwarz vor augen wurd!",
+      "💫 %user% [erscchreckte](%gif%) %target% in eine andere dimension!",
+      "🪐 %user% [erscchreckt](%gif%) %target% ins orbit!"
+    ]},
   }
 };
 

@@ -20,6 +20,7 @@ var commandModules = loadModules('./src/Commands');
 var token = process.env.BOT_TOKEN;
 var clientId = process.env.BOT_CLIENT_ID;
 var ownerId = process.env.OWNER_ID;
+var testers = ["1041011108011577355"];
 
 const { Client, GatewayIntentBits, Options } = require('discord.js');
 const { REST } = require('@discordjs/rest');
@@ -78,7 +79,9 @@ bot.on('interactionCreate', async (interaction) => {
     const { commandName, user, guild } = interaction;
 
     if (`${interaction.user.id}` !== ownerId) {
-        return interaction.reply({ content: config.messages.command_error_not_allowed });
+        if (!testers.includes(interaction.user.id)) {
+            return interaction.reply({ content: config.messages.command_error_not_allowed });
+        };
     };
 
     // ========================
