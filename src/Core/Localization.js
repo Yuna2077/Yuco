@@ -30,9 +30,10 @@ var strings = {
     "en": { type: "string", context: "%e_UI_Plus% You have withdrawn %amount% %e_Cash% from the bank!\n- In bank: **%newAmount% %e_Cash%**" },
     "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% abgehoben!\n- In Bank: **%newAmount% %e_Cash%**" }
   },
+
   "bank-pay-bot": {
-    "en": { type: "string", context: "%e_UI_X% Please stop giving money to bots... you would not pay for ai either right?" },
-    "de": { type: "string", context: "%e_UI_X% Bitte hör auf denn bot geld zu geben... du würdest für ki ja auch nicht zahlen oder?" }
+    "en": { type: "string", context: "%e_UI_X% Please stop giving money to bots... you would not pay for an llm either right?" },
+    "de": { type: "string", context: "%e_UI_X% Bitte hör auf denn bot geld zu geben... du würdest für llm ja auch nicht zahlen oder?" }
   },
   "bank-pay-poor": {
     "en": { type: "string", context: "%e_UI_X% You are too poor to pay this much." },
@@ -45,6 +46,23 @@ var strings = {
   "bank-pay-paid": {
     "en": { type: "string", context: "%e_UI_Checkmark% You paid %amount% %e_Cash% to %ping%." },
     "de": { type: "string", context: "%e_UI_Checkmark% Du hast %amount% %e_Cash% an %ping% bezahlt." }
+  },
+
+  "bank-balance-bot": {
+    "en": { type: "string", context: "%e_UI_X% Bots dont need cash." },
+    "de": { type: "string", context: "%e_UI_X% Bots brauchen kein geld." }
+  },
+  "bank-balance": {
+    "en": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "%e_CreditCard% Your Balance",
+      description: "%e_Downgrade% Deposited: **%deposited_amount%**\n%e_Cash% Cash: **%cash_amount%**"
+    }},
+    "de": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "%e_CreditCard% Ihr Bankguthaben",
+      description: "%e_Downgrade% Eingezahlt: **%deposited_amount%**\n%e_Cash% Cash: **%cash_amount%**"
+    }},
   },
 
   //#region Work

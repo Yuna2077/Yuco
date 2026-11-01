@@ -1,4 +1,6 @@
 module.exports = {
+  "Downgrade": "<:Downgrade:1566458404300525750>",
+
   "WhiteSkul": "<:WhiteSkul:1563682989744066601>",
   "Skull": "<:Skull:1563682980482785390>",
 

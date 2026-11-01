@@ -1,4 +1,4 @@
-var { GetAsync } = require("../DataStorage/Datastore");
+var { GetAsync } = require("../../DataStorage/Datastore");
 
 module.exports = {
   data: {
