@@ -23,12 +23,12 @@ var strings = {
   //#endregion
 
   "bank-deposite": {
-    "en": { type: "string", context: "%e_UI_Plus% You deposited %amount% %e_Cash% into the bank!\n- In bank: **%newAmount% %e_Cash%**" },
-    "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% eingezahlt!\n- In Bank: **%newAmount% %e_Cash%**" }
+    "en": { type: "string", context: "%e_UI_Plus% You deposited %amount% %e_Cash% into the bank!\n- In bank: **%deposited% %e_Cash%**" },
+    "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% eingezahlt!\n- In Bank: **%deposited% %e_Cash%**" }
   },
   "bank-withdraw": {
-    "en": { type: "string", context: "%e_UI_Plus% You have withdrawn %amount% %e_Cash% from the bank!\n- In bank: **%newAmount% %e_Cash%**" },
-    "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% abgehoben!\n- In Bank: **%newAmount% %e_Cash%**" }
+    "en": { type: "string", context: "%e_UI_Plus% You have withdrawn %amount% %e_Cash% from the bank!\n- In bank: **%deposited% %e_Cash%**" },
+    "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% abgehoben!\n- In Bank: **%deposited% %e_Cash%**" }
   },
 
   "bank-pay-bot": {
