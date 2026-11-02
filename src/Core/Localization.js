@@ -174,6 +174,27 @@ var strings = {
     "en": { type: "string", context: "%e_UI_X% You lost %amount% %e_Cash%!\n%result%" },
     "de": { type: "string", context: "%e_UI_X% Du hast %amount% %e_Cash% verloren!\n%result%" }
   },
+
+  "gambling-coinflip-poor": {
+    "en": { type: "string", context: "%e_UI_X% You do not have enough money to flip that amount!" },
+    "de": { type: "string", context: "%e_UI_X% Du hast nicht so viel geld zum verzocken!" }
+  },
+  "gambling-coinflip-win": {
+    "en": { type: "string", context: "🪙 Your coin landed on %face% and won you %amount% %e_Cash%!" },
+    "de": { type: "string", context: "🪙 Deine münze ist auf %face% gelandet und hat dir %amount% %e_Cash% gewonnen!" }
+  },
+  "gambling-coinflip-lose": {
+    "en": { type: "string", context: "%e_Skull% Yikes your coin landed on %face%, you lost %amount% %e_Cash%" },
+    "de": { type: "string", context: "%e_Skull% Autch die münze ist auf %face% gelandet, du hast %amount% %e_Cash% verloren." }
+  },
+  "gambling-counflip-head": {
+    "en": { type: "string", context: "head" },
+    "de": { type: "string", context: "kopf" }
+  },
+  "gambling-counflip-tails": {
+    "en": { type: "string", context: "tails" },
+    "de": { type: "string", context: "zahl" }
+  },
   //#endregion
 
 
