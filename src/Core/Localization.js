@@ -187,11 +187,11 @@ var strings = {
     "en": { type: "string", context: "%e_Skull% Yikes your coin landed on %face%, you lost %amount% %e_Cash%" },
     "de": { type: "string", context: "%e_Skull% Autch die münze ist auf %face% gelandet, du hast %amount% %e_Cash% verloren." }
   },
-  "gambling-counflip-head": {
+  "gambling-coinflip-head": {
     "en": { type: "string", context: "head" },
     "de": { type: "string", context: "kopf" }
   },
-  "gambling-counflip-tails": {
+  "gambling-coinflip-tails": {
     "en": { type: "string", context: "tails" },
     "de": { type: "string", context: "zahl" }
   },

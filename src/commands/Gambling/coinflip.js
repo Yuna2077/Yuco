@@ -49,11 +49,11 @@ module.exports = {
 
     // Option something weird idk
     if (option === "head") {
-      option = get_locale_parsed(vars.language, "gambling-coinlfip-head");
-      opposite_option = get_locale_parsed(vars.language, "gambling-coinlfip-tails");
+      option = get_locale_parsed(vars.language, "gambling-coinflip-head");
+      opposite_option = get_locale_parsed(vars.language, "gambling-coinflip-tails");
     } else {
-      option = get_locale_parsed(vars.language, "gambling-coinlfip-tails");
-      opposite_option = get_locale_parsed(vars.language, "gambling-coinlfip-head");
+      option = get_locale_parsed(vars.language, "gambling-coinflip-tails");
+      opposite_option = get_locale_parsed(vars.language, "gambling-coinflip-head");
     };
 
     if (Math.random() * 100 < settings.win_chance) {
