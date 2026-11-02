@@ -274,6 +274,11 @@ async function LoadBackup(name) {
 }
 
 module.exports = {
+  // Core
+  createUser,
+  getAsync,
+  removeUser,
+
   // User Exports
   GetAsync,
   SetAsync,
@@ -287,10 +292,9 @@ module.exports = {
   SetGlobalAsync,
   AddToGlobalAsync,
 
-  // Utility
+  // Backups
   CreateBackup,
   LoadBackup,
-  removeUser,
 
   // Startup
   initDB

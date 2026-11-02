@@ -16,12 +16,22 @@ var strings = {
     "en": { type: "string", context: "%e_UI_X% Interaction expired or was already handled." },
     "de": { type: "string", context: "%e_UI_X% Interaktion abgelaufen oder wurde schon gehandhabt." }
   },
+  "core-privacy-delete": {
+    "en": { type: "string", context: "%e_UI_X% Your data has been deleted, your data can not restored." },
+    "de": { type: "string", context: "%e_UI_X% Deine daten wurden gelöscht, diese können nicht wieder hergestellt werden." }
+  },
+  "core-privacy-request": {
+    "en": { type: "string", context: "%e_UI_Plus% Here is your current data within the bot:\n%data%" },
+    "de": { type: "string", context: "%e_UI_Plus% Hier sind deine aktuel gespeicherten daten:\n%data%" }
+  },
   "core-cooldown": {
     "en": { type: "string", context: "%e_UI_X% You are on cooldown, %seconds% seconds remaining!" },
     "de": { type: "string", context: "%e_UI_X% Du bist auf cooldown, noch %seconds% sekunden!" }
   },
   //#endregion
 
+
+  //#region Bank
   "bank-deposite": {
     "en": { type: "string", context: "%e_UI_Plus% You deposited %amount% %e_Cash% into the bank!\n- In bank: **%deposited% %e_Cash%**" },
     "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% eingezahlt!\n- In Bank: **%deposited% %e_Cash%**" }
@@ -64,6 +74,8 @@ var strings = {
       description: "%e_Downgrade% Eingezahlt: **%deposited_amount%**\n%e_Cash% Cash: **%cash_amount%**"
     }},
   },
+  //#endregion
+
 
   //#region Work
   "work-mine": {

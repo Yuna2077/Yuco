@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 
 ---
+## [2026.11]
+
+### ⚒️ Added
+- **/deposite**
+- **/withdraw**
+- **/spook**
+
+---
+
 
 ## [2026.10]
 > There is currently not time planed on when the bot fully goes life, i will expect somewhere down the next few weeks tho.
