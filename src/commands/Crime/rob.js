@@ -1,6 +1,7 @@
 var { get_locale_parsed } = require("../../Core/Localization");
 var { GetAsync, AddToAsync, SetAsync } = require("../../DataStorage/Datastore");
 var { add_history } = require("../../Utilities/Helper");
+var { set_cooldown_for } = require("../../Utilities/Cooldown");
 
 var settings = {
   takeaway_percentage_max: 50,
@@ -21,6 +22,7 @@ module.exports = {
 
     if (target && target.bot) return interaction.editReply(get_locale_parsed(vars.language, "rob-bot"));
 
+    set_cooldown_for(interaction, "rob", 300);
     let cash = await GetAsync(interaction.user.id, "cash");
     if (target.id == interaction.user.id) return interaction.editReply(get_locale_parsed(vars.language, "rob-self", { amount: Math.floor(Math.random() * cash) }));
 
