@@ -68,6 +68,8 @@ module.exports = {
     else if (a.emoji === b.emoji || b.emoji === c.emoji || c.emoji === a.emoji) multiplier = 2;
 
     if (multiplier === 0) {
+      let history = add_history(await GetAsync(interaction.user.id, "history") || [], "- " + amount + " [Slots]");
+     await SetAsync(interaction.user.id, { history: history });
       await AddToAsync(interaction.user.id, { cash: -amount })
       return interaction.editReply(get_locale_parsed(vars.language, "gambling-slots-lose", { amount: amount, result: functions.build(display) }));
     };
