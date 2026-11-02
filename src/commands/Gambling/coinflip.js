@@ -45,7 +45,7 @@ module.exports = {
     var cash = await GetAsync(interaction.user.id, "cash");
 
     if (amount > cash) return interaction.editReply(get_locale_parsed(vars.language, "gambling-coinflip-poor"));
-    set_cooldown_for(interaction, "coinflip", 60);
+    set_cooldown_for(interaction, "coinflip", 30);
 
     // Option something weird idk
     if (option === "head") {
