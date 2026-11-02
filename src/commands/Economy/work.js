@@ -59,7 +59,7 @@ var settings = {
 module.exports = {
   data: { name: "work", description: "Earn yourself some cash!" },
   run: async function(interaction, client, vars) {
-    set_cooldown_for(interaction, "work", 60);
+    set_cooldown_for(interaction, "work", 30);
 
     var job = choose(settings.jobs[core.THEME]);
 

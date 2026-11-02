@@ -51,7 +51,7 @@ module.exports = {
       return interaction.editReply({ embeds: [get_locale_parsed(vars.language, "gambling-slots-info", { description: str })] });
     };
 
-    set_cooldown_for(interaction, "slots", 60);
+    set_cooldown_for(interaction, "slots", 30);
     var result = [functions.get_symbol(), functions.get_symbol(), functions.get_symbol()];
     let display = [settings.placeholder, settings.placeholder, settings.placeholder];
     await interaction.editReply(parse_string(functions.build(display)));
