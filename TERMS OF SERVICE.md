@@ -10,7 +10,7 @@
 ## 1. Restrictions
 
 - **User Requirements**
-Users must be at least 13 years of age (or the minimum age of digital consent in their country) to use Yeco. 
+Users must be at least 13 years of age (or the minimum age of digital consent in their country) to use our bots. 
 > Users under that age may have their data purged without notice if discovered or reported.
 
 - **Virtual Economy & RMT**
@@ -24,10 +24,10 @@ Intentional exploitation of bugs, glitches, or the use of third-party automation
 
 ## 2. Service & Availability
 
-- **"As-Is" Service:** Yeco is provided "as-is" for Discord communities and users.
-- **Uptime:** Yeco does not guarantee any uptime, reliability, or uninterrupted availability.
+- **"As-Is" Service:** My bots are provided "as-is" for Discord communities and users.
+- **Uptime:** My bots don't not guarantee any uptime, reliability, or uninterrupted availability.
 - **Modifications:** Features may change, be removed, reset, or become unavailable at any time for balancing or technical reasons.
-- **Authorization:** You may use the bot in any server where it is properly invited. Servers may be restricted from using Yeco if found to be in violation of the Discord Terms of Service.
+- **Authorization:** You may use the bot in any server where it is properly invited. Servers may be restricted from using my bots if found to be in violation of the Discord Terms of Service.
 
 ---
 
