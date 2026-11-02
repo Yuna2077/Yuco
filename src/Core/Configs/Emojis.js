@@ -1,4 +1,15 @@
 module.exports = {
+  "RedStar": "<:RedStar:1566852847348490240>",
+  "PurpleStar": "<:PurpleStar:1566852845830012958>",
+  "GreenStar": "<:GreenStar:1566852844060147763>",
+  "GoldenStar": "<:GoldenStar:1566852841425870988>",
+  "BlueStar": "<:BlueStar:1566852838108168283>",
+
+  "GoldenAngelHeart": "<:GoldenAngelHeart:1566853373032923289>",
+  "AngelHeart": "<:AngelHeart:1566853370843500605>",
+  "Heart": "<:Heart:1566852214117634149>",
+  "GoldenHeart": "<:GoldenHeart:1566852204885835776>",
+
   "Downgrade": "<:Downgrade:1566458404300525750>",
 
   "WhiteSkul": "<:WhiteSkul:1563682989744066601>",

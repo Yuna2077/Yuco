@@ -148,6 +148,33 @@ var strings = {
   },
 
 
+  //#region Gambling
+  
+  "gambling-slots-info": {
+    "en": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "🎰 Slot machine info",
+      description: "%description%"
+    }},
+    "de": { type: "embed", context: {
+      color: [200, 100, 250],
+      title: "🎰 Slot Maschienen info",
+      description: "%description%"
+    }},
+  },
+  "gambling-slots-poor": {
+    "en": { type: "string", context: "%e_UI_X% You do not have enough money to gamble that amount!" },
+    "de": { type: "string", context: "%e_UI_X% Du hast nicht so viel geld zum verzocken!" }
+  },
+  "gambling-slots-win": {
+    "en": { type: "string", context: "%e_UI_Plus% You won %amount% %e_Cash% [x%multiplier% Multiplier]\n%result%" },
+    "de": { type: "string", context: "%e_UI_Plus% Du hast %amount% %e_Cash% gewonnen [x%multiplier% Multiplier]\n%result%" }
+  },
+  "gambling-slots-lose": {
+    "en": { type: "string", context: "%e_UI_X% You lost %amount% %e_Cash%!\n%result%" },
+    "de": { type: "string", context: "%e_UI_X% Du hast %amount% %e_Cash% verloren!\n%result%" }
+  },
+  //#endregion
 
 
   //#region FUN
