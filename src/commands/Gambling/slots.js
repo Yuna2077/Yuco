@@ -1,6 +1,6 @@
 var { get_locale_parsed, parse_string } = require("../../Core/Localization");
 var { GetAsync, AddToAsync, SetAsync } = require("../../DataStorage/Datastore");
-var { sleep } = require("../../Utilities/Helper");
+var { sleep, add_history } = require("../../Utilities/Helper");
 var { set_cooldown_for } = require("../../Utilities/Cooldown");
 
 var settings = {
@@ -75,7 +75,7 @@ module.exports = {
     var reward = Math.round(amount * multiplier);
     await AddToAsync(interaction.user.id, { cash: reward, total_gambled: reward });
 
-    let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + earned + " [Slots]");
+    let history = add_history(await GetAsync(interaction.user.id, "history") || [], "+ " + reward + " [Slots]");
     await SetAsync(interaction.user.id, { history: history });
 
     return interaction.editReply(get_locale_parsed(vars.language, "gambling-slots-win", { amount: amount, multiplier: multiplier, result: functions.build(display) }));
