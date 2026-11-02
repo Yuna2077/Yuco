@@ -1,9 +1,7 @@
 ## AGREEMENT TO PRIVACY POLICY
+>**Last updated:** Nov. 2nd 2026 [@everyone pings will be sent to our support servers once the policies change.]
 
-**Bot:** Yuco
-**Makers:** YunaCode
-**Contact us:** discord.gg/sPQFM9Rj33
-**Last updated:** Nov. 2nd 2026 [@everyone pings will be sent to our support servers once the policies change.]
+~ **Bot:** Yuco ~ **Makers:** YunaCode ~ **Contact us:** discord.gg/sPQFM9Rj33 ~
 
 ---
 
