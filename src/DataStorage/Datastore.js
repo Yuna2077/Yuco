@@ -5,11 +5,11 @@ const fs = require('fs');
 const dbPath = path.join(__dirname, "datastore.db");
 let db = new sqlite3.Database(dbPath, (err) => {
   if (err) debug({
-    string: `[ERROR]: Database failed to open, error: ${err}!`,
+    string: `Database failed to open, error: ${err}!`,
     configSet: CONFIG.DEBUG_LEVELS.ERROR
   });
   else debug({
-    string: `[INFO]: Database opened`,
+    string: `Database opened`,
     configSet: CONFIG.DEBUG_LEVELS.INFO
   });;
 });
@@ -17,9 +17,9 @@ let db = new sqlite3.Database(dbPath, (err) => {
 // ----- CONFIG ----- \\
 const CONFIG = {
   DEBUG_LEVELS: {
-    INFO: { ACTIVE: true, COLOR: "\x1b[36m" },
-    WARN: { ACTIVE: true, COLOR: "\x1b[93m" },
-    ERROR: { ACTIVE: true, COLOR: "\x1b[31m" },
+    INFO: { ACTIVE: true, COLOR: "\x1b[36m [INFO]:" },
+    WARN: { ACTIVE: true, COLOR: "\x1b[93m [WARN]:" },
+    ERROR: { ACTIVE: true, COLOR: "\x1b[31m [ERROR]:" },
   }
 };
 
@@ -44,7 +44,7 @@ const defaultData = {
 
 // ------------------ Helpers ------------------
 function debug({ string, configSet }) {
-  if (configSet.ACTIVE) console.log(configSet.COLOR, string, "\x1b[0m")
+  if (configSet.ACTIVE) console.log(configSet.COLOR, "\x1b[0m", string)
 }
 
 function runAsync(sql, params = []) {
