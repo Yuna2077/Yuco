@@ -101,6 +101,7 @@ var strings = {
   //#endregion
 
 
+  //#region Daily
   "daily-not-ready": {
     "en": { type: "string", context: "%e_UI_X% Daily not ready, next claim at %date%." },
     "de": { type: "string", context: "%e_UI_X% Tägliche belohnung nicht bereit, nächster claim am %date%." }
@@ -129,7 +130,10 @@ var strings = {
       description: "%e_Gift% Belohnung: %amount%\n%e_Fire% Streak: %streak% | %e_PurpleFire% Best: %streak_best%\n%e_PurpleLighting% 2x Wochenend Boost aktiv!"
     }},
   },
+  //#endregion
 
+
+  //#region Rob
   "rob-bot": {
     "en": { type: "string", context: "%e_UI_X% Robbing a bot huh... you hit a new low." },
     "de": { type: "string", context: "%e_UI_X% Einen bot ausrauben huh... du bist das aller letzte" }
@@ -146,6 +150,7 @@ var strings = {
     "en": { type: "string", context: "%e_Skull% You were caught in the attempt to rob %user% you have been fined %amount% %e_Cash%!" },
     "de": { type: "string", context: "%e_Skull% Du wurdest erwischt beim versuch %user% auszurauben, du musstest eine strafe von %amount% %e_Cash% zahlen!" }
   },
+  //#endregion
 
 
   //#region Gambling
@@ -237,6 +242,14 @@ var strings = {
       "💫 %user% [erscchreckte](%gif%) %target% in eine andere dimension!",
       "🪐 %user% [erscchreckt](%gif%) %target% ins orbit!"
     ]},
+  },
+  //#endregion
+
+
+  //#region Settings
+  "setting-language": {
+    "en": { type: "string", context: "%e_UI_Checkmark% Language successfully changed." },
+    "de": { type: "string", context: "%e_UI_Checkmark% Sprache erfolgreich geändert." }
   },
   //#endregion
 };
