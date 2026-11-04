@@ -28,7 +28,7 @@ module.exports = {
 
     data.LAST = today_str;
     data.STREAK = (data.LAST === yesterday_str) ? data.STREAK + 1 : 1;
-    data.BEST = data.BEST < data.STREAK ? data.STREAK : data.BEST;
+    data.BEST = data.BEST < data.STREAK ? data.STREAK : data.BEST | 1;
 
     var reward = Math.floor(Math.random() * (settings.payout.max - settings.payout.min) + settings.payout.min);
     var is_weekend = (name === 'Saturday' || name === 'Sunday');
